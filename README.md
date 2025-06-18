@@ -1,10 +1,10 @@
 # YC Startup Fetcher
 
-This Go program fetches startup data batch-wise from the unofficial Y Combinator startup directory API, stores it in a local SQLite database, and prints a table of the startups.
+This Go program fetches startup data batch-wise from Y Combinator's public Algolia index, stores it in a local SQLite database, and prints a table of the startups.
 
 ## Features
 
-- Fetches startup data from `https://ycombinator-oss.vercel.app/api/batch/{batch_name}.json`.
+- Fetches startup data via Algolia using the `YCCompany_production` index.
 - Stores data locally in an SQLite database (`yc_startups.db`).
 - Displays startup name, website, and location in a formatted table.
 - Handles duplicate entries by ignoring conflicts based on startup slug.
@@ -52,6 +52,7 @@ This Go program fetches startup data batch-wise from the unofficial Y Combinator
     ```
 
     Other example batch names: `winter-2023`, `winter-2022`, `summer-2022`, etc.
+    The batch names must match the format used on YC's site, e.g. `Summer 2023`.
 
 ## Database
 
