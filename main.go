@@ -4,7 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"net/url"
 	"os"
+	"strings"
 	"text/tabwriter" // For formatted table output
 
 	_ "github.com/mattn/go-sqlite3" // SQLite driver (already in database.go but good for explicitness if main is run alone)
@@ -18,7 +20,11 @@ func main() {
 		fmt.Println("Example: go run . summer-2023")
 		os.Exit(1)
 	}
-	batchName := os.Args[1]
+	input := os.Args[1]
+	batchName, err := parseBatchArg(input)
+	if err != nil {
+		log.Fatalf("Invalid input: %v", err)
+	}
 
 	log.Printf("Fetching data for batch: %s", batchName)
 	startups, err := FetchBatchData(batchName)
@@ -89,4 +95,22 @@ func DisplayStartups(db *sql.DB) error {
 	}
 
 	return nil
+}
+
+// parseBatchArg returns the batch name from a direct batch input or a YC
+// companies URL such as "https://www.ycombinator.com/companies?batch=Winter%202022".
+// It simply extracts the "batch" query parameter when a URL is provided.
+func parseBatchArg(arg string) (string, error) {
+	if strings.HasPrefix(arg, "http://") || strings.HasPrefix(arg, "https://") {
+		u, err := url.Parse(arg)
+		if err != nil {
+			return "", fmt.Errorf("failed to parse URL: %w", err)
+		}
+		batch := u.Query().Get("batch")
+		if batch == "" {
+			return "", fmt.Errorf("no batch parameter found in URL")
+		}
+		return batch, nil
+	}
+	return arg, nil
 }
