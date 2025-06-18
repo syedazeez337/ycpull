@@ -51,7 +51,6 @@ This Go program fetches startup data batch-wise from Y Combinator's public Algol
     go run . "Summer 2023"
     ```
 
-
 ## Database
 
 - The program will automatically create an SQLite database file named `yc_startups.db` in the same directory where you run the command.
