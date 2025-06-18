@@ -39,19 +39,19 @@ This Go program fetches startup data batch-wise from Y Combinator's public Algol
     This will create an executable file named `yc_fetcher`.
 
 4.  **Run the program:**
-    Provide either a batch name or a full YC companies URL. For example, to fetch data for the 'summer-2023' batch:
+    Provide either a batch name or a full YC companies URL. For example, to fetch data for the "Summer 2023" batch:
 
     If you built the executable:
     ```bash
-    ./yc_fetcher summer-2023
+    ./yc_fetcher "Summer 2023"
     ```
 
     Alternatively, you can run directly using `go run`:
     ```bash
-    go run . summer-2023
+    go run . "Summer 2023"
     ```
 
-    Other example batch names: `winter-2023`, `winter-2022`, `summer-2022`, etc.
+    Other example batch names: `Winter 2023`, `Winter 2022`, `Summer 2022`, etc.
     You can also use a URL such as
     `https://www.ycombinator.com/companies?batch=Winter%202022` and the program
     will parse the batch name from the `batch` query parameter. Batch names must
