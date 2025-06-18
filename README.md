@@ -1,10 +1,10 @@
 # YC Startup Fetcher
 
-This Go program fetches startup data batch-wise from the unofficial Y Combinator startup directory API, stores it in a local SQLite database, and prints a table of the startups.
+This Go program fetches startup data batch-wise from Y Combinator's public Algolia index, stores it in a local SQLite database, and prints a table of the startups.
 
 ## Features
 
-- Fetches startup data from `https://ycombinator-oss.vercel.app/api/batch/{batch_name}.json`.
+- Fetches startup data via Algolia using the `YCCompany_production` index.
 - Stores data locally in an SQLite database (`yc_startups.db`).
 - Displays startup name, website, and location in a formatted table.
 - Handles duplicate entries by ignoring conflicts based on startup slug.
@@ -39,19 +39,23 @@ This Go program fetches startup data batch-wise from the unofficial Y Combinator
     This will create an executable file named `yc_fetcher`.
 
 4.  **Run the program:**
-    You need to provide a batch name as a command-line argument. For example, to fetch data for the 'summer-2023' batch:
+    Provide either a batch name or a full YC companies URL. For example, to fetch data for the "Summer 2023" batch:
 
     If you built the executable:
     ```bash
-    ./yc_fetcher summer-2023
+    ./yc_fetcher "Summer 2023"
     ```
 
     Alternatively, you can run directly using `go run`:
     ```bash
-    go run . summer-2023
+    go run . "Summer 2023"
     ```
 
-    Other example batch names: `winter-2023`, `winter-2022`, `summer-2022`, etc.
+    Other example batch names: `Winter 2023`, `Winter 2022`, `Summer 2022`, etc.
+    You can also use a URL such as
+    `https://www.ycombinator.com/companies?batch=Winter%202022` and the program
+    will parse the batch name from the `batch` query parameter. Batch names must
+    match the format used on YC's site, e.g. `Summer 2023`.
 
 ## Database
 
