@@ -51,11 +51,6 @@ This Go program fetches startup data batch-wise from Y Combinator's public Algol
     go run . "Summer 2023"
     ```
 
-    Other example batch names: `Winter 2023`, `Winter 2022`, `Summer 2022`, etc.
-    You can also use a URL such as
-    `https://www.ycombinator.com/companies?batch=Winter%202022` and the program
-    will parse the batch name from the `batch` query parameter. Batch names must
-    match the format used on YC's site, e.g. `Summer 2023`.
 
 ## Database
 
