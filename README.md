@@ -7,6 +7,7 @@ This Go program fetches startup data batch-wise from Y Combinator's public Algol
 - Fetches startup data via Algolia using the `YCCompany_production` index.
 - Stores data locally in an SQLite database (`yc_startups.db`).
 - Displays startup name, website, and location in a formatted table.
+- Interactive TUI to choose a startup and view details.
 - Handles duplicate entries by ignoring conflicts based on startup slug.
 
 ## Prerequisites
