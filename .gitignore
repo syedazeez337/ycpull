@@ -30,3 +30,8 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# YC Fetcher artifacts
+yc_startups.db
+yc_fetcher
+*.db
