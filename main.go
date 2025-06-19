@@ -17,7 +17,7 @@ const dbPath = "yc_startups.db"
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: go run . <batch_name>")
-		fmt.Println("Example: go run . summer-2023")
+		fmt.Println("Example: go run . \"Summer 2023\"")
 		os.Exit(1)
 	}
 	input := os.Args[1]
