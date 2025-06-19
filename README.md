@@ -52,6 +52,9 @@ This Go program fetches startup data batch-wise from Y Combinator's public Algol
     go run . "Summer 2023"
     ```
 
+    After data is stored, the program launches a simple TUI where you can select
+    a startup to see its details and any contact email found on its website.
+
 ## Database
 
 - The program will automatically create an SQLite database file named `yc_startups.db` in the same directory where you run the command.
