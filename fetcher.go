@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -51,7 +51,7 @@ func FetchBatchData(batchName string) (startups []Startup, err error) { // Named
 		return nil, fmt.Errorf("failed to fetch data: status code %d for %s", resp.StatusCode, url)
 	}
 
-	body, readErr := ioutil.ReadAll(resp.Body)
+	body, readErr := io.ReadAll(resp.Body)
 	if readErr != nil {
 		err = fmt.Errorf("failed to read response body from %s: %w", url, readErr)
 		return nil, err
